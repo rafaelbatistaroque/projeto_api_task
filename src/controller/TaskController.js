@@ -12,8 +12,18 @@ class TaskController {
 
   async CriarTarefa(req, res) {
     try {
-      // await repositorio.Criar(req.body);
+      await repositorio.Criar(req.body);
       sucesso(res, "Tarefa cadastrada com sucesso");
+    } catch (error) {
+      falha(res, error);
+    }
+  }
+
+  async AtualizarTarefa(req, res) {
+    let { id } = req.params;
+    try {
+      let tarefaAtualizada = await repositorio.Atualizar(id, req.body);
+      sucesso(res, tarefaAtualizada);
     } catch (error) {
       falha(res, error);
     }

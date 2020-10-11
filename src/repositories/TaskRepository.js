@@ -11,7 +11,9 @@ class TaskRepository {
     return await Tarefa.find({}, "titulo feito quando descricao");
   }
 
-  // async Atualizar();
+  async Atualizar(id, tarefa) {
+    return await Tarefa.findByIdAndUpdate({ _id: id }, tarefa, { new: true });
+  }
   // async Deletar();
 }
 

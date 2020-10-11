@@ -2,8 +2,18 @@ const validacao = require("../shared/Validacao");
 
 class TaskMiddleware {
   async HandlePost(req, res, next) {
-    if (validar(req).EhInvalido()) {
-      naoAltorizada(res, validacao.ObterErros());
+    if (validarBody(req).EhInvalido) {
+      naoAltorizada(res, validacao.Erros);
+      return validacao.LimparErros();
+    }
+
+    validacao.LimparErros();
+    return next();
+  }
+
+  async HandlePut(req, res, next) {
+    if (validarQueries(req).EhInvalido || validarBody(req).EhInvalido) {
+      naoAltorizada(res, validacao.Erros);
       return validacao.LimparErros();
     }
 
@@ -12,7 +22,13 @@ class TaskMiddleware {
   }
 }
 
-function validar(req) {
+function validarQueries(req) {
+  let { id } = req.params;
+
+  return validacao.EhRequerido(id, "O parâmetro que identifica a tarefa não existe");
+}
+
+function validarBody(req) {
   let { enderecomac, tipo, titulo, descricao, quando } = req.body;
 
   return validacao

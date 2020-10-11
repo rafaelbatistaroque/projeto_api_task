@@ -56,11 +56,11 @@ class Validacao {
 
   EhDataPassado(data, mensagem) {
     if (new Date(data) < new Date(new Date().setHours(-4, 0, 0, 0))) this.#erros.push({ id: gerarId(), mensagem });
-    
+
     return this;
   }
 
-  ObterErros() {
+  get Erros() {
     return this.#erros;
   }
 
@@ -70,11 +70,11 @@ class Validacao {
     return this;
   }
 
-  EhValido() {
+  get EhValido() {
     return this.#erros.length === 0;
   }
 
-  EhInvalido() {
+  get EhInvalido() {
     return this.#erros.length > 0;
   }
 }

@@ -5,5 +5,6 @@ const taskMiddleware = require("../middleware/TaskMiddleware");
 
 rota.get("/", taskController.ObterTarefas);
 rota.post("/", taskMiddleware.HandlePost, taskController.CriarTarefa);
+rota.put("/:id?", taskMiddleware.HandlePut, taskController.AtualizarTarefa);
 
 module.exports = rota;
