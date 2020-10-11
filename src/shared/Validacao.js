@@ -5,50 +5,62 @@ class Validacao {
     this.#erros = [];
   }
 
-  ehRequerido(valor, mensagem) {
+  EhRequerido(valor, mensagem) {
     if (!valor || valor.length <= 0) this.#erros.push({ id: gerarId(), mensagem });
 
     return this;
   }
 
-  ehMenorQue(valor, min, mensagem) {
+  EhMenorQue(valor, min, mensagem) {
     if (!valor || valor.length < min) this.#erros.push({ id: gerarId(), mensagem });
 
     return this;
   }
 
-  ehMaiorQue(valor, max, mensagem) {
+  EhMaiorQue(valor, max, mensagem) {
     if (!valor || valor.length > max) this.#erros.push({ id: gerarId(), mensagem });
 
     return this;
   }
 
-  deveSerIgual(valor, len, mensagem) {
+  DeveSerIgual(valor, len, mensagem) {
     if (valor.length !== len) this.#erros.push({ id: gerarId(), mensagem });
 
     return this;
   }
 
-  ehMail(valor, mensagem) {
+  EhMail(valor, mensagem) {
     let reg = new RegExp(/^\w+([-+.']\w+)*@\w+([-.]\w+)*\.\w+([-.]\w+)*$/);
     if (!reg.test(valor)) this.#erros.push({ id: gerarId(), mensagem });
 
     return this;
   }
 
-  adicionarErro(mensagem) {
+  AdicionarErro(mensagem) {
     this.#erros.push({ id: gerarId(), mensagem });
 
     return this;
   }
 
-  naoEhNumero(valor, mensagem) {
+  NaoEhNumero(valor, mensagem) {
     if (!Number.isInteger(valor)) this.#erros.push({ id: gerarId(), mensagem });
 
     return this;
   }
 
-  obterErros() {
+  EhTipoData(data, mensagem) {
+    if (Number.isNaN(Date.parse(data))) this.#erros.push({ id: gerarId(), mensagem });
+
+    return this;
+  }
+
+  EhDataPassado(data, mensagem) {
+    if (new Date(data) < new Date(new Date().setHours(-4, 0, 0, 0))) this.#erros.push({ id: gerarId(), mensagem });
+    
+    return this;
+  }
+
+  ObterErros() {
     return this.#erros;
   }
 
@@ -58,11 +70,11 @@ class Validacao {
     return this;
   }
 
-  ehValido() {
+  EhValido() {
     return this.#erros.length === 0;
   }
 
-  ehInvalido() {
+  EhInvalido() {
     return this.#erros.length > 0;
   }
 }

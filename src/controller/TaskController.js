@@ -12,7 +12,7 @@ class TaskController {
 
   async CriarTarefa(req, res) {
     try {
-      await repositorio.Criar(req.body);
+      // await repositorio.Criar(req.body);
       sucesso(res, "Tarefa cadastrada com sucesso");
     } catch (error) {
       falha(res, error);
@@ -20,10 +20,8 @@ class TaskController {
   }
 }
 
-
-
-function sucesso(res, mensagem) {
-  res.status(200).json({ existeErro: false, mensagem });
+function sucesso(res, data) {
+  return res.status(200).json({ existeErro: false, data });
 }
 
 function falha(resposta, e) {
