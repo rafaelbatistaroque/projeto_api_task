@@ -1,9 +1,10 @@
 const repositorio = require("../repositories/TaskRepository");
 
 class TaskController {
-  async ObterTarefas(_, res) {
+  async ObterTarefas(req, res) {
+    let { enderecomac } = req.body;
     try {
-      let resposta = await repositorio.Obter();
+      let resposta = await repositorio.Obter(enderecomac);
       sucesso(res, resposta);
     } catch (error) {
       falha(res, error);

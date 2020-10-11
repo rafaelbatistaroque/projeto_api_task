@@ -7,8 +7,8 @@ class TaskRepository {
     await tarefa.save();
   }
 
-  async Obter() {
-    return await Tarefa.find({}, "titulo feito quando descricao");
+  async Obter(enderecomac) {
+    return await Tarefa.find({ enderecomac: { $in: enderecomac } }, "titulo feito quando descricao").sort("quando");
   }
 
   async Atualizar(id, tarefa) {
