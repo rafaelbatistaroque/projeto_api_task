@@ -18,8 +18,8 @@ mongoose.set("useUnifiedTopology", true);
 mongoose.set("useCreateIndex", true);
 mongoose.connect(config.connectionStringLocal);
 
-app.use("/", indexRoute);
-app.use("/task", taskRoutes);
+app.use("/api/v1/", indexRoute);
+app.use("/api/v1/task", taskRoutes);
 
 // module.exports = app;
 
