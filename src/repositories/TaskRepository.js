@@ -7,7 +7,10 @@ class TaskRepository {
     await tarefa.save();
   }
 
-  //async Obter();
+  async Obter() {
+    return await Tarefa.find({}, "titulo feito quando descricao");
+  }
+
   // async Atualizar();
   // async Deletar();
 }
