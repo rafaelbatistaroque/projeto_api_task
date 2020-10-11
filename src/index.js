@@ -16,6 +16,7 @@ const taskRoutes = require("./routes/task-rotas");
 mongoose.set("useNewUrlParser", true);
 mongoose.set("useUnifiedTopology", true);
 mongoose.set("useCreateIndex", true);
+mongoose.set("useFindAndModify", false);
 mongoose.connect(config.connectionStringLocal);
 
 app.use("/api/v1/", indexRoute);

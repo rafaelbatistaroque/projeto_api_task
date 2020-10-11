@@ -1,10 +1,12 @@
 const express = require("express");
 const rota = express.Router();
 const taskController = require("../controller/TaskController");
-const taskMiddleware = require("../middleware/TaskMiddleware");
+const atualizarTarefaMiddleware = require("../middleware/AtualizarTarefaMiddleware");
+const obterTarefasPorMacMiddleware = require("../middleware/ObterTodasAsTarefasPorMacMiddleware");
+const criarTarefaMiddleware = require("../middleware/CriarNovaTarefaMiddleware");
 
-rota.get("/", taskController.ObterTarefas);
-rota.post("/", taskMiddleware.HandlePost, taskController.CriarTarefa);
-rota.put("/:id?", taskMiddleware.HandlePut, taskController.AtualizarTarefa);
+rota.get("/filtro/todas", obterTarefasPorMacMiddleware.Handdle, taskController.ObterTarefas);
+rota.post("/", criarTarefaMiddleware.Handdle, taskController.CriarTarefa);
+rota.put("/:id?", atualizarTarefaMiddleware.Handdle, taskController.AtualizarTarefa);
 
 module.exports = rota;
