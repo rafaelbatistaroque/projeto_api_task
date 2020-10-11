@@ -1,4 +1,4 @@
-const mongoose = require("../config/database");
+const mongoose = require("mongoose");
 const Schema = mongoose.Schema;
 
 const TaskSchema = new Schema({
@@ -8,7 +8,7 @@ const TaskSchema = new Schema({
   descricao: { type: String, required: true },
   quando: { type: Date, required: true },
   feito: { type: Boolean, default: false },
-  criadoem: { type: Date, default: Date.now() },
+  criadoem: { type: Date, default: Date.now },
 });
 
 module.exports = mongoose.model("Task", TaskSchema);

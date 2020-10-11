@@ -1,11 +1,28 @@
-const express = require('express')
-const server = express();
+const express = require("express");
+const mongoose = require("mongoose");
+const config = require("./config/database");
+const app = express();
 
-server.get('/api', (req, res) => {
-  res.send("Task API v.0.1");
-})
+app.use(express.json());
 
+//Models
+require("./model/TaskModel");
 
-server.listen(3000, () => {
+//Rotas
+const indexRoute = require("./routes/index-rota");
+const taskRoutes = require("./routes/task-rotas");
+
+//Database
+mongoose.set("useNewUrlParser", true);
+mongoose.set("useUnifiedTopology", true);
+mongoose.set("useCreateIndex", true);
+mongoose.connect(config.connectionStringLocal);
+
+app.use("/", indexRoute);
+app.use("/task", taskRoutes);
+
+// module.exports = app;
+
+app.listen(3000, () => {
   console.log("API online");
 });
