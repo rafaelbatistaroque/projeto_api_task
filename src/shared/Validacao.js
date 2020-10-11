@@ -5,36 +5,33 @@ class Validacao {
     this.#erros = [];
   }
 
-  ehRequerido(value, mensagem) {
-    if (!value || value.length <= 0)
-      this.#erros.push({ id: gerarId(), mensagem });
+  ehRequerido(valor, mensagem) {
+    if (!valor || valor.length <= 0) this.#erros.push({ id: gerarId(), mensagem });
 
     return this;
   }
 
-  ehMenorQue(value, min, mensagem) {
-    if (!value || value.length < min)
-      this.#erros.push({ id: gerarId(), mensagem });
+  ehMenorQue(valor, min, mensagem) {
+    if (!valor || valor.length < min) this.#erros.push({ id: gerarId(), mensagem });
 
     return this;
   }
 
-  ehMaiorQue(value, max, mensagem) {
-    if (!value || value.length > max)
-      this.#erros.push({ id: gerarId(), mensagem });
+  ehMaiorQue(valor, max, mensagem) {
+    if (!valor || valor.length > max) this.#erros.push({ id: gerarId(), mensagem });
 
     return this;
   }
 
-  deveSerIgual(value, len, mensagem) {
-    if (value.length !== len) this.#erros.push({ id: gerarId(), mensagem });
+  deveSerIgual(valor, len, mensagem) {
+    if (valor.length !== len) this.#erros.push({ id: gerarId(), mensagem });
 
     return this;
   }
 
-  ehMail(value, mensagem) {
+  ehMail(valor, mensagem) {
     let reg = new RegExp(/^\w+([-+.']\w+)*@\w+([-.]\w+)*\.\w+([-.]\w+)*$/);
-    if (!reg.test(value)) this.#erros.push({ id: gerarId(), mensagem });
+    if (!reg.test(valor)) this.#erros.push({ id: gerarId(), mensagem });
 
     return this;
   }
@@ -45,8 +42,8 @@ class Validacao {
     return this;
   }
 
-  naoEhNumero(value, mensagem) {
-    if (!Number.isInteger(value)) this.#erros.push({ id: gerarId(), mensagem });
+  naoEhNumero(valor, mensagem) {
+    if (!Number.isInteger(valor)) this.#erros.push({ id: gerarId(), mensagem });
 
     return this;
   }
