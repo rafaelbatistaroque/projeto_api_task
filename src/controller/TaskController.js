@@ -13,9 +13,9 @@ class TaskController {
 
   async ObterTarefaPorId(req, res) {
     let { id } = req.params;
-    console.log("passou");
+    let { enderecomac } = req.body;
     try {
-      let resposta = await repositorio.ObterPorId(id);
+      let resposta = await repositorio.ObterPorId(id, enderecomac);
       sucesso(200, res, resposta);
     } catch (error) {
       falha(res, error);
