@@ -5,7 +5,18 @@ class TaskController {
     let { enderecomac } = req.body;
     try {
       let resposta = await repositorio.Obter(enderecomac);
-      sucesso(res, resposta);
+      sucesso(200, res, resposta);
+    } catch (error) {
+      falha(res, error);
+    }
+  }
+
+  async ObterTarefaPorId(req, res) {
+    let { id } = req.params;
+    console.log("passou");
+    try {
+      let resposta = await repositorio.ObterPorId(id);
+      sucesso(200, res, resposta);
     } catch (error) {
       falha(res, error);
     }
@@ -14,7 +25,7 @@ class TaskController {
   async CriarTarefa(req, res) {
     try {
       await repositorio.Criar(req.body);
-      sucesso(res, "Tarefa cadastrada com sucesso");
+      sucesso(201, res, "Tarefa cadastrada com sucesso");
     } catch (error) {
       falha(res, error);
     }
@@ -24,23 +35,22 @@ class TaskController {
     let { id } = req.params;
     try {
       let tarefaAtualizada = await repositorio.Atualizar(id, req.body);
-      sucesso(res, tarefaAtualizada);
+      sucesso(201, res, tarefaAtualizada);
     } catch (error) {
       falha(res, error);
     }
   }
 }
 
-function sucesso(res, data) {
-  return res.status(200).json({ existeErro: false, data });
+function sucesso(code, res, data) {
+  return res.status(code).json({ existeErro: false, data }).end();
 }
 
 function falha(resposta, e) {
   return resposta
     .status(500)
-    .json({ existeErro: true, mensagem: "Falha ao processar sua requisição", info: e.message });
+    .json({ existeErro: true, mensagem: "Falha ao processar sua requisição", info: e.message })
+    .end();
 }
-
-
 
 module.exports = new TaskController();

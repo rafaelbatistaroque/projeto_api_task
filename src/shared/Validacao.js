@@ -6,7 +6,7 @@ class Validacao {
   }
 
   EhRequerido(valor, mensagem) {
-    if (!valor || valor.length <= 0) this.#erros.push({ id: gerarId(), mensagem });
+    if (!valor || valor.length <= 0 || valor === undefined) this.#erros.push({ id: gerarId(), mensagem });
 
     return this;
   }

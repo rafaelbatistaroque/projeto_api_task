@@ -2,7 +2,7 @@ const express = require("express");
 const rota = express.Router();
 
 rota.get("/", (_, res) => {
-  res.status(200).json({ erro: false, status: "Ok", info: "Task API v1.0.0" });
+  res.status(200).json({ erro: false, status: "Ok", info: "Task API v1.0.0" }).end();
 });
 
 module.exports = rota;
