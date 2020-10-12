@@ -8,7 +8,21 @@ class TaskRepository {
   }
 
   async Obter(enderecomac) {
+    let existe = await Tarefa.exists({ enderecomac: enderecomac });
+    
+    if (!existe)
+      return "Nenhum registro encontrado";
+    
     return await Tarefa.find({ enderecomac: { $in: enderecomac } }, "titulo feito quando descricao").sort("quando");
+  }
+
+  async ObterPorId(id) {
+    let existe = await Tarefa.exists({ _id: id });
+
+    if (!existe)
+      return "Nenhum registro encontrado";
+    
+    return await Tarefa.findById(id, "titulo feito quando descricao");
   }
 
   async Atualizar(id, tarefa) {
