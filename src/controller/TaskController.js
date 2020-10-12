@@ -4,8 +4,8 @@ class TaskController {
   async ObterTarefas(req, res) {
     let { enderecomac } = req.body;
     try {
-      let resposta = await repositorio.Obter(enderecomac);
-      sucesso(200, res, resposta);
+      let tarefas = await repositorio.Obter(enderecomac);
+      sucesso(200, res, tarefas);
     } catch (error) {
       falha(res, error);
     }
@@ -15,8 +15,8 @@ class TaskController {
     let { id } = req.params;
     let { enderecomac } = req.body;
     try {
-      let resposta = await repositorio.ObterPorId(id, enderecomac);
-      sucesso(200, res, resposta);
+      let tarefa = await repositorio.ObterPorId(id, enderecomac);
+      sucesso(200, res, tarefa);
     } catch (error) {
       falha(res, error);
     }
@@ -24,8 +24,8 @@ class TaskController {
 
   async CriarTarefa(req, res) {
     try {
-      await repositorio.Criar(req.body);
-      sucesso(201, res, "Tarefa cadastrada com sucesso");
+      let respostaTarefaCadastrada = await repositorio.Criar(req.body);
+      sucesso(201, res, respostaTarefaCadastrada);
     } catch (error) {
       falha(res, error);
     }
@@ -36,6 +36,17 @@ class TaskController {
     try {
       let tarefaAtualizada = await repositorio.Atualizar(id, req.body);
       sucesso(201, res, tarefaAtualizada);
+    } catch (error) {
+      falha(res, error);
+    }
+  }
+
+  async DeletarTarefa(req, res) {
+    let { id } = req.params;
+    let { enderecomac } = req.body;
+    try {
+      let tarefaDeletada = await repositorio.Deletar(id, enderecomac);
+      sucesso(200, res, tarefaDeletada);
     } catch (error) {
       falha(res, error);
     }

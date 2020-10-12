@@ -5,6 +5,7 @@ class TaskRepository {
   async Criar(novaTarefa) {
     let tarefa = new Tarefa(novaTarefa);
     await tarefa.save();
+    return "Tarefa cadastrada com sucesso";
   }
 
   async Obter(enderecomac) {
@@ -24,9 +25,21 @@ class TaskRepository {
   }
 
   async Atualizar(id, tarefa) {
+    let existe = await Tarefa.exists({ _id: id, enderecomac: tarefa.enderecomac });
+
+    if (!existe) return "Nenhum registro encontrado";
+
     return await Tarefa.findByIdAndUpdate({ _id: id }, tarefa, { new: true });
   }
-  // async Deletar();
+
+  async Deletar(id, enderecomac) {
+    let existe = await Tarefa.exists({ _id: id, enderecomac: enderecomac });
+
+    if (!existe) return "Nenhum registro encontrado";
+
+    await Tarefa.deleteOne({ _id: id, enderecomac: enderecomac });
+    return "Registro deletado com sucesso";
+  }
 }
 
 module.exports = new TaskRepository();
