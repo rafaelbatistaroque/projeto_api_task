@@ -51,6 +51,16 @@ class TaskController {
       falha(res, error);
     }
   }
+
+  async MudarStatusTarefa(req, res) {
+    let { id } = req.params;
+    try {
+      let tarefaAtualizada = await repositorio.Atualizar(id, req.body);
+      sucesso(200, res, tarefaAtualizada);
+    } catch (error) {
+      falha(res, error);
+    }
+  }
 }
 
 function sucesso(code, res, data) {

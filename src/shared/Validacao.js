@@ -1,12 +1,14 @@
 class Validacao {
   #erros;
-
+  #TIPOS = {
+    boolean: "boolean",
+  }
   constructor() {
     this.#erros = [];
   }
 
   EhRequerido(valor, mensagem) {
-    if (!valor || valor.length <= 0 || valor === undefined) this.#erros.push({ id: gerarId(), mensagem });
+    if (valor === null || valor === undefined || valor.length <= 0) this.#erros.push({ id: gerarId(), mensagem });
 
     return this;
   }
@@ -50,6 +52,12 @@ class Validacao {
 
   EhTipoData(data, mensagem) {
     if (Number.isNaN(Date.parse(data))) this.#erros.push({ id: gerarId(), mensagem });
+
+    return this;
+  }
+
+  EhTipoBoolean(data, mensagem) {
+    if (typeof data !==  this.#TIPOS.boolean) this.#erros.push({ id: gerarId(), mensagem });
 
     return this;
   }
