@@ -1,6 +1,8 @@
 const mongoose = require("mongoose");
 const Tarefa = mongoose.model("Task");
 
+const diaAtual = new Date(new Date().setHours(-4,0,0,0));
+
 class TaskRepository {
   async Criar(novaTarefa) {
     let tarefa = new Tarefa(novaTarefa);
@@ -9,19 +11,15 @@ class TaskRepository {
   }
 
   async Obter(enderecomac) {
-    let existe = await Tarefa.exists({ enderecomac: enderecomac });
-
-    if (!existe) return "Nenhum registro encontrado";
-
     return await Tarefa.find({ enderecomac: { $in: enderecomac } }, "titulo feito quando descricao").sort("quando");
   }
 
   async ObterPorId(id, enderecomac) {
-    let existe = await Tarefa.exists({ _id: id, enderecomac: enderecomac });
+    return await Tarefa.findOne({ _id: id, enderecomac: enderecomac }, "titulo feito quando descricao");
+  }
 
-    if (!existe) return "Nenhum registro encontrado";
-
-    return await Tarefa.findById(id, "titulo feito quando descricao");
+  async ObterAtrasadas(enderecomac) {
+      return await Tarefa.find({quando:{"$lt": diaAtual}, enderecomac: enderecomac})
   }
 
   async Atualizar(id, tarefa) {

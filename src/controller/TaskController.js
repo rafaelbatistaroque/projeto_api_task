@@ -61,6 +61,16 @@ class TaskController {
       falha(res, error);
     }
   }
+
+  async ObterTarefasAtrasadas(req, res) {
+    let { enderecomac } = req.body;
+    try {
+      let tarefasAtrasadas = await repositorio.ObterAtrasadas(enderecomac);
+      sucesso(200, res, tarefasAtrasadas);
+    } catch (error) {
+      falha(res, error);
+    }
+  }
 }
 
 function sucesso(code, res, data) {
