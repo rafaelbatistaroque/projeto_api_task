@@ -1,8 +1,8 @@
-const validacao = require("../shared/Validacao");
+const validacao = require("../../shared/Validacao");
 
-class CriarNovaTarefaMiddleware {
+class AtualizarTarefaMiddleware {
   async Handdle(req, res, next) {
-    if (validarBody(req).EhInvalido) {
+    if (validarParams(req).EhInvalido || validarBody(req).EhInvalido) {
       naoAltorizada(res, validacao.Erros);
       return validacao.LimparErros();
     }
@@ -10,6 +10,12 @@ class CriarNovaTarefaMiddleware {
     validacao.LimparErros();
     return next();
   }
+}
+
+function validarParams(req) {
+  let { id } = req.params;
+
+  return validacao.EhRequerido(id, "O parâmetro que identifica a tarefa não existe");
 }
 
 function validarBody(req) {
@@ -30,5 +36,4 @@ function validarBody(req) {
 function naoAltorizada(res, erros) {
   return res.status(403).json({ existeErro: true, erros }).end();
 }
-
-module.exports = new CriarNovaTarefaMiddleware();
+module.exports = new AtualizarTarefaMiddleware();

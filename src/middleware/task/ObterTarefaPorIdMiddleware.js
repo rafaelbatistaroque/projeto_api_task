@@ -1,6 +1,6 @@
-const validacao = require("../shared/Validacao");
+const validacao = require("../../shared/Validacao");
 
-class AtualizarStatusTarefaMiddleware {
+class ObterTarefaPorIdMiddleware {
   async Handdle(req, res, next) {
     if (validarParams(req).EhInvalido || validarBody(req).EhInvalido) {
       naoAltorizada(res, validacao.Erros);
@@ -18,16 +18,13 @@ function validarParams(req) {
 }
 
 function validarBody(req) {
-  let { enderecomac, feito } = req.body;
+  let { enderecomac } = req.body;
 
-  return validacao
-    .EhRequerido(enderecomac, "Endereço MAC é requerido")
-    .EhRequerido(feito, "O status da tarefa é requerido")
-    .EhTipoBoolean(feito, "O tipo do status da tarefa deve ser booleano");
+  return validacao.EhRequerido(enderecomac, "Endereço MAC é requerido");
 }
 
 function naoAltorizada(res, erros) {
   return res.status(403).json({ existeErro: true, erros }).end();
 }
 
-module.exports = new AtualizarStatusTarefaMiddleware();
+module.exports = new ObterTarefaPorIdMiddleware();

@@ -1,13 +1,13 @@
 const express = require("express");
 const rota = express.Router();
 const taskController = require("../controller/TaskController");
-const atualizarTarefaMiddleware = require("../middleware/AtualizarTarefaMiddleware");
-const obterTarefasPorMacMiddleware = require("../middleware/ObterTodasAsTarefasPorMacMiddleware");
-const criarTarefaMiddleware = require("../middleware/CriarNovaTarefaMiddleware");
-const obterTarefaPorIdMiddleware = require("../middleware/ObterTarefaPorIdMiddleware");
-const deletarTarefaPorIdMiddleware = require("../middleware/DeletarTarefaMiddleware");
-const atualizarStatusTarefaMiddleware = require("../middleware/AtualizarStatusTarefaMiddleware");
-const obterTarefasAtrasadasMiddleware = require("../middleware/ObterTarefasAtrasadasMiddleware");
+const atualizarTarefaMiddleware = require("../middleware/task/AtualizarTarefaMiddleware");
+const obterTarefasPorMacMiddleware = require("../middleware/task/ObterTodasAsTarefasPorMacMiddleware");
+const criarTarefaMiddleware = require("../middleware/task/CriarNovaTarefaMiddleware");
+const obterTarefaPorIdMiddleware = require("../middleware/task/ObterTarefaPorIdMiddleware");
+const deletarTarefaPorIdMiddleware = require("../middleware/task/DeletarTarefaMiddleware");
+const atualizarStatusTarefaMiddleware = require("../middleware/task/AtualizarStatusTarefaMiddleware");
+const obterTarefasAtrasadasMiddleware = require("../middleware/task/ObterTarefasAtrasadasMiddleware");
 
 rota.get("/filtro/todas", obterTarefasPorMacMiddleware.Handdle, taskController.ObterTarefas);
 rota.get("/filtro/atrasadas", obterTarefasAtrasadasMiddleware.Handdle, taskController.ObterTarefasAtrasadas);
