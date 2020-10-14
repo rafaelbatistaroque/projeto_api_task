@@ -27,8 +27,8 @@
   - ✔️ Middlewares
   - ✔️ Filtros
 
-  ## 🔫 Iniciar o projeto
-  - Baixe as dependências do projeto digitando no terminal: `yarn install`.
-  - inicie o servidor digitando: `yarn start`.
-  - Você receberá uma mensagem no terminal: `API online`.
-  - As rotas da API estão salvas [aqui](https://github.com/rafaelbatistaroque/projeto_api_task/tree/master/src/utils).
+## 🔫 Iniciar o projeto
+- Baixe as dependências do projeto digitando no terminal: `yarn install`.
+- inicie o servidor digitando: `yarn start`.
+- Você receberá uma mensagem no terminal: `API online`.
+- As rotas da API estão salvas [aqui](https://github.com/rafaelbatistaroque/projeto_api_task/tree/master/src/utils).
