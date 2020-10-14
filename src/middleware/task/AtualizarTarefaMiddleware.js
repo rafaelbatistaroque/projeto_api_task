@@ -36,4 +36,5 @@ function validarBody(req) {
 function naoAltorizada(res, erros) {
   return res.status(403).json({ existeErro: true, erros }).end();
 }
+
 module.exports = new AtualizarTarefaMiddleware();

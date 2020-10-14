@@ -14,7 +14,8 @@ class DeletarTarefaMiddleware {
 
 function validarParams(req) {
   let { id } = req.params;
-  return validacao.EhRequerido(id, "Está faltando parâmentro para localizar a tarefa");
+  
+  return validacao.EhRequerido(id, "Está faltando parâmetro para localizar a tarefa");
 }
 
 function validarBody(req) {
