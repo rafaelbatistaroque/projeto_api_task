@@ -91,6 +91,16 @@ class TaskController {
       falha(res, error);
     }
   }
+
+  async ObterTarefasMes(req, res) {
+    let { enderecomac } = req.body;
+    try {
+      let tarefasDoMes = await repositorio.ObterMes(enderecomac);
+      sucesso(200, res, tarefasDoMes);
+    } catch (error) {
+      falha(res, error);
+    }
+  }
 }
 
 function sucesso(code, res, data) {

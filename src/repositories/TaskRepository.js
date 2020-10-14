@@ -1,7 +1,7 @@
 const mongoose = require("mongoose");
 const Tarefa = mongoose.model("Task");
 const diaAtual = new Date(new Date().setHours(-4,0,0,0));
-const { startOfDay, endOfDay, startOfWeek, endOfWeek } = require("date-fns");
+const { startOfDay, endOfDay, startOfWeek, endOfWeek, startOfMonth, endOfMonth } = require("date-fns");
 
 class TaskRepository {
   async Criar(novaTarefa) {
@@ -32,6 +32,13 @@ class TaskRepository {
   async ObterSemana(enderecomac) {
     return await Tarefa.find({
       quando: { $gte: startOfWeek(diaAtual), $lt: endOfWeek(diaAtual) },
+      enderecomac: enderecomac,
+    }).sort("quando");
+  }
+
+  async ObterMes(enderecomac) {
+    return await Tarefa.find({
+      quando: { $gte: startOfMonth(diaAtual), $lt: endOfMonth(diaAtual) },
       enderecomac: enderecomac,
     }).sort("quando");
   }
