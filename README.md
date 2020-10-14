@@ -1,10 +1,6 @@
 # API Task
 
-<img src="https://img.shields.io/static/v1?label=👉&message=Nodejs&color=339933&style=for-the-badge&logo=Node.js"/> 
-<img src="https://img.shields.io/static/v1?label=👉&message=JavaScript&color=F7DF1E&style=for-the-badge&logo=JavaScript"/> 
-<img src="https://img.shields.io/static/v1?label=👉&message=MongoDb&color=47A248&style=for-the-badge&logo=MongoDB"/> 
-<img src="https://img.shields.io/static/v1?label=👉&message=Insomnia&color=5849BE&style=for-the-badge&logo=Insomnia"/> 
-<img src="https://img.shields.io/static/v1?label=👉&message=Yarn&color=2C8EBB&style=for-the-badge&logo=Yarn"/>
+<img src="https://img.shields.io/static/v1?label=.&message=Nodejs&color=339933&style=for-the-badge&logo=Node.js"/> <img src="https://img.shields.io/static/v1?label=.&message=JavaScript&color=F7DF1E&style=for-the-badge&logo=JavaScript"/> <img src="https://img.shields.io/static/v1?label=.&message=MongoDb&color=47A248&style=for-the-badge&logo=MongoDB"/> <img src="https://img.shields.io/static/v1?label=.&message=Insomnia&color=5849BE&style=for-the-badge&logo=Insomnia"/> <img src="https://img.shields.io/static/v1?label=.&message=Yarn&color=2C8EBB&style=for-the-badge&logo=Yarn"/>
 
 ### ⌛ Status do Projeto
 
