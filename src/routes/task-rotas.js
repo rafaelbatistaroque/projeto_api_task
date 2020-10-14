@@ -8,11 +8,12 @@ const deletarTarefaPorIdMiddleware = require("../middleware/task/DeletarTarefaMi
 const atualizarStatusTarefaMiddleware = require("../middleware/task/AtualizarStatusTarefaMiddleware");
 const obterTarefasFiltroMiddleware = require("../middleware/task/ObterTarefasFiltroMiddleware");
 
-rota.get("/filtro/todas", obterTarefasFiltroMiddleware.Handdle, taskController.ObterTarefas);
-rota.get("/filtro/atrasadas", obterTarefasFiltroMiddleware.Handdle, taskController.ObterTarefasAtrasadas);
-rota.get("/filtro/hoje", obterTarefasFiltroMiddleware.Handdle, taskController.ObterTarefasHoje);
-rota.get("/filtro/semana", obterTarefasFiltroMiddleware.Handdle, taskController.ObterTarefasSemana);
-rota.get("/filtro/mes", obterTarefasFiltroMiddleware.Handdle, taskController.ObterTarefasMes);
+rota.get("/filtro/todas", obterTarefasFiltroMiddleware.Handdle, taskController.FiltroTarefasTodas);
+rota.get("/filtro/atrasadas", obterTarefasFiltroMiddleware.Handdle, taskController.FiltroTarefasAtrasadas);
+rota.get("/filtro/hoje", obterTarefasFiltroMiddleware.Handdle, taskController.FiltroTarefasHoje);
+rota.get("/filtro/semana", obterTarefasFiltroMiddleware.Handdle, taskController.FiltroTarefasSemana);
+rota.get("/filtro/mes", obterTarefasFiltroMiddleware.Handdle, taskController.FiltroTarefasMes);
+rota.get("/filtro/ano", obterTarefasFiltroMiddleware.Handdle, taskController.FiltroTarefasAno);
 rota.post("/", criarTarefaMiddleware.Handdle, taskController.CriarTarefa);
 rota.put("/mudar-status-tarefa/:id?", atualizarStatusTarefaMiddleware.Handdle, taskController.MudarStatusTarefa);
 rota

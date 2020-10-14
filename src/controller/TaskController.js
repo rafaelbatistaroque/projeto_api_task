@@ -1,10 +1,10 @@
 const repositorio = require("../repositories/TaskRepository");
 
 class TaskController {
-  async ObterTarefas(req, res) {
+  async FiltroTarefasTodas(req, res) {
     let { enderecomac } = req.body;
     try {
-      let tarefas = await repositorio.Obter(enderecomac);
+      let tarefas = await repositorio.ObterTodas(enderecomac);
       sucesso(200, res, tarefas);
     } catch (error) {
       falha(res, error);
@@ -62,41 +62,51 @@ class TaskController {
     }
   }
 
-  async ObterTarefasAtrasadas(req, res) {
+  async FiltroTarefasAtrasadas(req, res) {
     let { enderecomac } = req.body;
     try {
-      let tarefasAtrasadas = await repositorio.ObterAtrasadas(enderecomac);
+      let tarefasAtrasadas = await repositorio.ObterAtrasada(enderecomac);
       sucesso(200, res, tarefasAtrasadas);
     } catch (error) {
       falha(res, error);
     }
   }
 
-  async ObterTarefasHoje(req, res) {
+  async FiltroTarefasHoje(req, res) {
     let { enderecomac } = req.body;
     try {
-      let tarefasHoje = await repositorio.ObterHoje(enderecomac);
+      let tarefasHoje = await repositorio.ObterPorHoje(enderecomac);
       sucesso(200, res, tarefasHoje);
     } catch (error) {
       falha(res, error);
     }
   }
 
-  async ObterTarefasSemana(req, res) {
+  async FiltroTarefasSemana(req, res) {
     let { enderecomac } = req.body;
     try {
-      let tarefasSemana = await repositorio.ObterSemana(enderecomac);
+      let tarefasSemana = await repositorio.ObterPorSemana(enderecomac);
       sucesso(200, res, tarefasSemana);
     } catch (error) {
       falha(res, error);
     }
   }
 
-  async ObterTarefasMes(req, res) {
+  async FiltroTarefasMes(req, res) {
     let { enderecomac } = req.body;
     try {
-      let tarefasDoMes = await repositorio.ObterMes(enderecomac);
+      let tarefasDoMes = await repositorio.ObterPorMes(enderecomac);
       sucesso(200, res, tarefasDoMes);
+    } catch (error) {
+      falha(res, error);
+    }
+  }
+
+  async FiltroTarefasAno(req, res) {
+    let { enderecomac } = req.body;
+    try {
+      let tarefasDoAno = await repositorio.ObterPorAno(enderecomac);
+      sucesso(200, res, tarefasDoAno);
     } catch (error) {
       falha(res, error);
     }
