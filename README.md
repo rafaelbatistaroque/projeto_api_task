@@ -1,9 +1,6 @@
 # API Task
 
-<img src="https://img.shields.io/static/v1?label=nodejs&message=API&color=darkgreen&style=for-the-badge&logo=Node.js"/>
-<img src="https://img.shields.io/static/v1?label=&message=Ecmascript&color=505050&style=for-the-badge&logo=Javascript"/>
-<img src="https://img.shields.io/static/v1?label=&message=MongoDb&color=505050&style=for-the-badge&logo=MongoDB"/>
-<img src="https://img.shields.io/static/v1?label=Yarn&message=1.22.5&color=2C8EBB&style=for-the-badge&logo=Yarn"/>
+<img src="https://img.shields.io/static/v1?label=&message=Nodejs - API&color=505050&style=for-the-badge&logo=Node.js"/> <img src="https://img.shields.io/static/v1?label=&message=Ecmascript&color=505050&style=for-the-badge&logo=Javascript"/> <img src="https://img.shields.io/static/v1?label=&message=MongoDb&color=505050&style=for-the-badge&logo=MongoDB"/> <img src="https://img.shields.io/static/v1?label=Yarn&message=1.22.5&color=2C8EBB&style=for-the-badge&logo=Yarn"/>
 
 ### ⌛ Status do Projeto
 
