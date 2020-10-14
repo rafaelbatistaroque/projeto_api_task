@@ -8,9 +8,11 @@ const obterTarefaPorIdMiddleware = require("../middleware/task/ObterTarefaPorIdM
 const deletarTarefaPorIdMiddleware = require("../middleware/task/DeletarTarefaMiddleware");
 const atualizarStatusTarefaMiddleware = require("../middleware/task/AtualizarStatusTarefaMiddleware");
 const obterTarefasAtrasadasMiddleware = require("../middleware/task/ObterTarefasAtrasadasMiddleware");
+const obterTarefasHojeMiddleware = require("../middleware/task/ObterTarefasHojeMiddleware");
 
 rota.get("/filtro/todas", obterTarefasPorMacMiddleware.Handdle, taskController.ObterTarefas);
 rota.get("/filtro/atrasadas", obterTarefasAtrasadasMiddleware.Handdle, taskController.ObterTarefasAtrasadas);
+rota.get("/filtro/hoje", obterTarefasHojeMiddleware.Handdle, taskController.ObterTarefasHoje);
 rota.post("/", criarTarefaMiddleware.Handdle, taskController.CriarTarefa);
 rota.put("/mudar-status-tarefa/:id?", atualizarStatusTarefaMiddleware.Handdle, taskController.MudarStatusTarefa);
 rota

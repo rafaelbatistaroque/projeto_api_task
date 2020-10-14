@@ -71,6 +71,16 @@ class TaskController {
       falha(res, error);
     }
   }
+
+  async ObterTarefasHoje(req, res) {
+    let { enderecomac } = req.body;
+    try {
+      let tarefasHoje = await repositorio.Obterhoje(enderecomac);
+      sucesso(200, res, tarefasHoje);
+    } catch (error) {
+      falha(res, error);
+    }
+  }
 }
 
 function sucesso(code, res, data) {
