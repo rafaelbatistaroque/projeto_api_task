@@ -4,7 +4,7 @@
   "main": "index.js",
   "license": "MIT",
   "scripts": {
-    "start": "nodemon src/index.js"
+    "start": "nodemon ./bin/server.js"
   },
   "dependencies": {
     "date-fns": "^2.16.1",

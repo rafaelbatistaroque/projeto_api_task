@@ -1,10 +1,14 @@
 # API Task
 
-<img src="https://img.shields.io/static/v1?label=Nodejs&message=API&color=505050&style=for-the-badge&logo=Node.js"/> <img src="https://img.shields.io/static/v1?label=&message=Ecmascript&color=505050&style=for-the-badge&logo=Javascript"/> <img src="https://img.shields.io/static/v1?label=&message=MongoDb&color=505050&style=for-the-badge&logo=MongoDB"/> <img src="https://img.shields.io/static/v1?label=Yarn&message=1.22.5&color=2C8EBB&style=for-the-badge&logo=Yarn"/>
+<img src="https://img.shields.io/static/v1?label=👉&message=Nodejs&color=339933&style=for-the-badge&logo=Node.js"/> 
+<img src="https://img.shields.io/static/v1?label=👉&message=JavaScript&color=F7DF1E&style=for-the-badge&logo=JavaScript"/> 
+<img src="https://img.shields.io/static/v1?label=👉&message=MongoDb&color=47A248&style=for-the-badge&logo=MongoDB"/> 
+<img src="https://img.shields.io/static/v1?label=👉&message=Insomnia&color=5849BE&style=for-the-badge&logo=Insomnia"/> 
+<img src="https://img.shields.io/static/v1?label=👉&message=Yarn&color=2C8EBB&style=for-the-badge&logo=Yarn"/>
 
 ### ⌛ Status do Projeto
 
-> 🚧  Em desenvolvimento...🚧
+> 🏆 Concluído ✔️
 ### 🎯  Objetivo
 
 > O Projeto tem como objetivo aprimorar habilidades pessoais em back-end com Nodejs, bem como colocar em prática conceitos de validações e levantar hispóteses para aplicabilidade.
@@ -18,11 +22,17 @@
 
 ## 🖥️ Features
 
-- [ ] API
-  - [x] Configuração banco
-  - [x] Repositório
-  - [x] Rotas
-  - [x] Validações: fluent-validation
-  - [x] Controller
-  - [x] Middlewares
-  - [ ] Filtros
+- ✔️ API
+  - ✔️ Configuração banco
+  - ✔️ Repositório
+  - ✔️ Rotas
+  - ✔️ Validações: fluent-validation
+  - ✔️ Controller
+  - ✔️ Middlewares
+  - ✔️ Filtros
+
+  ## 🔫 Iniciar o projeto
+  - Baixe as dependências do projeto digitando no terminal: `yarn install`.
+  - inicie o servidor digitando: `yarn start`.
+  - Você receberá uma mensagem no terminal: `API online`.
+  - As rotas da API estão salvas [aqui](https://github.com/rafaelbatistaroque/projeto_api_task/tree/master/src/utils).
