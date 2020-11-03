@@ -1,6 +1,6 @@
 const mongoose = require("mongoose");
 const Tarefa = mongoose.model("Task");
-const diaAtual = new Date(new Date().setHours(-4,0,0,0));
+const diaAtual = new Date(new Date().setHours(-4, 0, 0, 0));
 const {
   startOfDay,
   endOfDay,
@@ -20,7 +20,9 @@ class TaskRepository {
   }
 
   async ObterTodas(enderecomac) {
-    return await Tarefa.find({ enderecomac: { $in: enderecomac } }, "titulo feito quando descricao").sort("quando");
+    return await Tarefa.find({ enderecomac: { $in: enderecomac } }, "titulo feito tipo quando descricao").sort(
+      "quando"
+    );
   }
 
   async ObterPorId(id, enderecomac) {
@@ -28,7 +30,7 @@ class TaskRepository {
   }
 
   async ObterAtrasada(enderecomac) {
-    return await Tarefa.find({ quando: { $lt: diaAtual }, enderecomac: enderecomac }).sort("quando");
+    return await Tarefa.find({ quando: { $lt: diaAtual }, feito: false, enderecomac: enderecomac }).sort("quando");
   }
 
   async ObterPorHoje(enderecomac) {
@@ -63,8 +65,9 @@ class TaskRepository {
     let existe = await Tarefa.exists({ _id: id, enderecomac: tarefa.enderecomac });
 
     if (!existe) return "Nenhum registro encontrado";
-
-    return await Tarefa.findByIdAndUpdate({ _id: id }, tarefa, { new: true });
+    
+    await Tarefa.updateOne({ _id: id }, tarefa);
+    return "Registro atualizado com sucesso";
   }
 
   async Deletar(id, enderecomac) {

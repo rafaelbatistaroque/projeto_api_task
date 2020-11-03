@@ -4,7 +4,7 @@ const resposta = require("../../shared/RespostasRequisicao");
 class AtualizarTarefaMiddleware {
   async Handdle(req, res, next) {
     let { id } = req.params;
-    let { enderecomac, tipo, titulo, descricao, quando } = req.body;
+    let { enderecomac, tipo, titulo, descricao, quando, feito } = req.body;
 
     validacao
       .EhRequerido(id, "O parâmetro que identifica a tarefa não existe")
@@ -16,7 +16,8 @@ class AtualizarTarefaMiddleware {
       .EhMenorQue(descricao, 3, "A descrição deve ter no mínimo 3 caracteres.")
       .EhRequerido(quando, "Data é requerida")
       .EhTipoData(quando, "A data adicionada é inválida")
-      .EhDataPassado(quando, "A data adicionada não pode ser no passado.");
+      .EhRequerido(feito, "O status da tarefa é requerido")
+      .EhTipoBoolean(feito, "O tipo do status da tarefa deve ser booleano");
 
     if (validacao.EhInvalido) {
       resposta.NaoAutorizada(res, validacao.Erros);
